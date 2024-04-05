@@ -1,0 +1,21 @@
+{% extends "network/layout.html" %}
+
+{% block body %}
+    <div>
+        <ol>
+            {% for dog in dog_list %}
+            <li> {{ dog }} </li>
+            {% empty %}
+            <li> No Dogs to show</li>
+            {% endfor %}
+        </ol>
+    </div>
+    <div>
+        <form method = "post">
+            {% crsf %}
+            {{ dog_form }}
+            <button> </button>
+        </form>
+    </div>
+
+{% endblock %}
