@@ -5,24 +5,7 @@ from django.shortcuts import render
 from django.urls import reverse
 
 
-from .models import User, Dog
-
-class DogForm(Form):
-    name = CharField(max_length=30)
-
-def dogs(request):
-    if request.method == "GET":
-        dog_list = Dog.objects.all()
-        dog_form = DogForm()
-        return render(request, "network/index.html", {"dog_list": dog_list})
-    elif request.method == "POST":
-        dog_form = DogForm(request.POST)
-        if dog_form.is_valid():
-            dog = Dog(name=dog_form.cleaned_data["name"])
-            dog.save()
-            
-            return JsonResponse({"dog_name": dog.name})
-        
+from .models import User, Post
 
 def index(request):
     return render(request, "network/index.html")
