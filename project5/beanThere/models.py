@@ -5,8 +5,8 @@ from django.db import models
 class User(AbstractUser):
     pass
 
-class Post(models.Model):
-    text = models.CharField(max_length=300)
+class CoffeeShop(models.Model):
+    shop = models.CharField(max_length=300)
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="op")
     date = models.DateTimeField(auto_now_add=True)
 
